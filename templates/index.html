@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>이미지 맞추기 게임</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>이미지 맞추기 게임</h1>
+    <form id="start-game-form">
+        <label for="player_name">플레이어 이름:</label>
+        <input type="text" id="player_name" name="player_name" required>
+        <label for="difficulty">난이도:</label>
+        <select id="difficulty" name="difficulty">
+            <option value="easy">Easy</option>
+            <option value="normal" selected>Normal</option>
+        </select>
+        <button type="submit">게임 시작</button>
+    </form>
+    <div id="game-board"></div>
+    <script src="/static/js/game.js"></script>
+</body>
+</html>

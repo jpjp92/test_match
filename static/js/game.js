@@ -6,7 +6,7 @@ class ImageMatchingGame {
         this.timeLimit = 50;
         this.remainingTime = this.timeLimit;
         this.timer = null;
-        this.mode = "easy";
+        this.mode = "normal";
         this.totalImages = 10; // 추가: 총 이미지 수 설정
         
         // DOM이 로드된 후 초기화하도록 수정
@@ -14,7 +14,25 @@ class ImageMatchingGame {
             this.initializeElements();
             this.addEventListeners();
             this.setupGameBoard();
+            // 게임 보드 컨테이너 크기 설정 추가
+            this.setGameBoardSize();
         });
+    }
+
+    // 게임 보드 크기 설정을 위한 새로운 메서드
+    setGameBoardSize() {
+        this.gameBoard.style.width = '50%';
+        this.gameBoard.style.margin = '0 auto'; // 중앙 정렬
+        
+        // 카드 크기도 적절하게 조정
+        const style = document.createElement('style');
+        style.textContent = `
+            .card {
+                aspect-ratio: 1; /* 카드를 정사각형으로 유지 */
+                width: 100%; /* 그리드 셀에 맞춤 */
+            }
+        `;
+        document.head.appendChild(style);
     }
 
     initializeElements() {
@@ -131,7 +149,7 @@ class ImageMatchingGame {
             card.classList.add('flipped');
 
             if (this.selectedCards.length === 2) {
-                setTimeout(() => this.checkMatch(), 300);
+                setTimeout(() => this.checkMatch(), 100);
             }
         }
     }
@@ -151,7 +169,7 @@ class ImageMatchingGame {
             setTimeout(() => {
                 card1.classList.remove('flipped');
                 card2.classList.remove('flipped');
-            }, 500);
+            }, 100);
         }
         this.selectedCards = [];
     }
@@ -237,14 +255,22 @@ class ImageMatchingGame {
     //     }
     // }
 
+    // maskPlayerName(name) {
+    //     if (name.length <= 2) return name; // 2글자 이하는 마스킹하지 않음
+        
+    //     const firstChar = name.charAt(0);
+    //     const lastChar = name.charAt(name.length - 1);
+    //     const maskedPart = '*'.repeat(name.length - 2);
+        
+    //     return firstChar + maskedPart + lastChar;
+    // }
     maskPlayerName(name) {
-        if (name.length <= 2) return name; // 2글자 이하는 마스킹하지 않음
+        if (name.length === 1) return name; // 1글자는 마스킹하지 않음
         
         const firstChar = name.charAt(0);
-        const lastChar = name.charAt(name.length - 1);
-        const maskedPart = '*'.repeat(name.length - 2);
+        const maskedPart = '*'.repeat(name.length - 1); // 첫 글자를 제외한 모든 글자를 마스킹
         
-        return firstChar + maskedPart + lastChar;
+        return firstChar + maskedPart;
     }
 
     async updateLeaderboard() {
@@ -283,7 +309,6 @@ class ImageMatchingGame {
     }
 
 
-    
 
     completeReset() {
         this.mode = 'normal';

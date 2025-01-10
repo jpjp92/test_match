@@ -6,7 +6,7 @@ class ImageMatchingGame {
         this.timeLimit = 50;
         this.remainingTime = this.timeLimit;
         this.timer = null;
-        this.mode = "normal";
+        this.mode = "easy";
         this.totalImages = 10; // 추가: 총 이미지 수 설정
         
         // DOM이 로드된 후 초기화하도록 수정

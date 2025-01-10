@@ -1,5 +1,32 @@
+/* 기존 CSS에 추가할 내용 */
+.language-controls {
+    margin-bottom: 20px;
+    text-align: right;
+    padding: 10px;
+}
+
+.language-controls label {
+    margin-right: 10px;
+}
+
+.language-controls select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* 언어 변경 시 텍스트 방향 자동 조정 */
+[data-i18n] {
+    unicode-bidi: embed;
+}
+
+/* RTL 언어 지원을 위한 스타일 (필요한 경우) */
+html[dir="rtl"] .language-controls {
+    text-align: left;
+}
+
 .game-container {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }

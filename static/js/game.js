@@ -15,25 +15,25 @@ class ImageMatchingGame {
             this.addEventListeners();
             this.setupGameBoard();
             // 게임 보드 컨테이너 크기 설정 추가
-            this.setGameBoardSize();
+            // this.setGameBoardSize();
         });
     }
 
     // 게임 보드 크기 설정을 위한 새로운 메서드
-    setGameBoardSize() {
-        this.gameBoard.style.width = '55%';
-        this.gameBoard.style.margin = '0'; // 중앙 정렬 '0 auto'
+    // setGameBoardSize() {
+    //     this.gameBoard.style.width = '55%';
+    //     this.gameBoard.style.margin = '0'; // 중앙 정렬 '0 auto'
         
-        // 카드 크기도 적절하게 조정
-        const style = document.createElement('style');
-        style.textContent = `
-            .card {
-                aspect-ratio: 1; /* 카드를 정사각형으로 유지 */
-                width: 100%; /* 그리드 셀에 맞춤 */
-            }
-        `;
-        document.head.appendChild(style);
-    }
+    //     // 카드 크기도 적절하게 조정
+    //     const style = document.createElement('style');
+    //     style.textContent = `
+    //         .card {
+    //             aspect-ratio: 1; /* 카드를 정사각형으로 유지 */
+    //             width: 100%; /* 그리드 셀에 맞춤 */
+    //         }
+    //     `;
+    //     document.head.appendChild(style);
+    // }
 
     initializeElements() {
         this.playerNameInput = document.getElementById('playerName');
@@ -169,7 +169,7 @@ class ImageMatchingGame {
             setTimeout(() => {
                 card1.classList.remove('flipped');
                 card2.classList.remove('flipped');
-            }, 100);
+            }, 200);
         }
         this.selectedCards = [];
     }
@@ -235,35 +235,6 @@ class ImageMatchingGame {
         }
     }
 
-    // async updateLeaderboard() {
-    //     try {
-    //         const response = await fetch('/api/scores');
-    //         const scores = await response.json();
-            
-    //         const tbody = document.querySelector('#scoresTable tbody');
-    //         tbody.innerHTML = '';
-            
-    //         scores.forEach(score => {
-    //             const row = tbody.insertRow();
-    //             row.insertCell().textContent = score.player_name;
-    //             row.insertCell().textContent = score.score;
-    //             row.insertCell().textContent = score.difficulty;
-    //             row.insertCell().textContent = `${score.time_taken}초`;
-    //         });
-    //     } catch (error) {
-    //         console.error('리더보드 업데이트 중 오류:', error);
-    //     }
-    // }
-
-    // maskPlayerName(name) {
-    //     if (name.length <= 2) return name; // 2글자 이하는 마스킹하지 않음
-        
-    //     const firstChar = name.charAt(0);
-    //     const lastChar = name.charAt(name.length - 1);
-    //     const maskedPart = '*'.repeat(name.length - 2);
-        
-    //     return firstChar + maskedPart + lastChar;
-    // }
     maskPlayerName(name) {
         if (name.length === 1) return name; // 1글자는 마스킹하지 않음
         

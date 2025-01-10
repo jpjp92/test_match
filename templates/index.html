@@ -1,64 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title data-i18n="pageTitle">Image Matching Game</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <div class="game-container">
-        <!-- Language Selector -->
-        <div class="language-controls">
-            <label for="languageSelector">Language:</label>
-            <select id="languageSelector" class="form-control">
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="ko">한국어</option>
-            </select>
-        </div>
-
-        <form id="gameForm" onsubmit="return false;" class="controls">
-            <label for="playerName" data-i18n="playerNameLabel">Player Name:</label>
-            <input type="text" id="playerName" required>
-            
-            <label for="difficulty" data-i18n="difficultyLabel">Difficulty:</label>
-            <select id="difficulty">
-                <option value="easy" data-i18n="difficultyEasy">Easy</option>
-                <option value="normal" selected data-i18n="difficultyNormal">Normal</option>
-            </select>
-            
-            <button id="startButton" type="button" data-i18n="startButton">Start Game</button>
-        </form>
-
-        <div id="gameStatus">
-            <div id="status"></div>
-            <div id="timer"></div>
-        </div>
-
-        <div id="gameBoard" class="game-board"></div>
-
-        <div id="leaderboard" class="leaderboard">
-            <h2 data-i18n="leaderboardTitle">Leaderboard</h2>
-            <table id="scoresTable">
-                <thead>
-                    <tr>
-                        <th data-i18n="playerHeader">Player</th>
-                        <th data-i18n="scoreHeader">Score</th>
-                        <th data-i18n="difficultyHeader">Difficulty</th>
-                        <th data-i18n="timeHeader">Time</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-    </div>
-    <script src="/static/js/game.js"></script>
-</body>
-</html>
-
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
     <title>이미지 맞추기 게임</title>
 <!--     <link rel="stylesheet" href="/static/css/style.css"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -105,4 +47,4 @@
 </html>
     </table>
 </div>
- -->
+

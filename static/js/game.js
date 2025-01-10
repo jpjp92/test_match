@@ -21,8 +21,8 @@ class ImageMatchingGame {
 
     // 게임 보드 크기 설정을 위한 새로운 메서드
     setGameBoardSize() {
-        this.gameBoard.style.width = '65%';
-        this.gameBoard.style.margin = '0 auto'; // 중앙 정렬 '0 auto'
+        this.gameBoard.style.width = '55%';
+        this.gameBoard.style.margin = '0'; // 중앙 정렬 '0 auto'
         
         // 카드 크기도 적절하게 조정
         const style = document.createElement('style');

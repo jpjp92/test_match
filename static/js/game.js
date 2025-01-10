@@ -217,6 +217,36 @@ class ImageMatchingGame {
         }
     }
 
+    // async updateLeaderboard() {
+    //     try {
+    //         const response = await fetch('/api/scores');
+    //         const scores = await response.json();
+            
+    //         const tbody = document.querySelector('#scoresTable tbody');
+    //         tbody.innerHTML = '';
+            
+    //         scores.forEach(score => {
+    //             const row = tbody.insertRow();
+    //             row.insertCell().textContent = score.player_name;
+    //             row.insertCell().textContent = score.score;
+    //             row.insertCell().textContent = score.difficulty;
+    //             row.insertCell().textContent = `${score.time_taken}초`;
+    //         });
+    //     } catch (error) {
+    //         console.error('리더보드 업데이트 중 오류:', error);
+    //     }
+    // }
+
+    maskPlayerName(name) {
+        if (name.length <= 2) return name; // 2글자 이하는 마스킹하지 않음
+        
+        const firstChar = name.charAt(0);
+        const lastChar = name.charAt(name.length - 1);
+        const maskedPart = '*'.repeat(name.length - 2);
+        
+        return firstChar + maskedPart + lastChar;
+    }
+
     async updateLeaderboard() {
         try {
             const response = await fetch('/api/scores');
@@ -227,7 +257,7 @@ class ImageMatchingGame {
             
             scores.forEach(score => {
                 const row = tbody.insertRow();
-                row.insertCell().textContent = score.player_name;
+                row.insertCell().textContent = this.maskPlayerName(score.player_name);
                 row.insertCell().textContent = score.score;
                 row.insertCell().textContent = score.difficulty;
                 row.insertCell().textContent = `${score.time_taken}초`;

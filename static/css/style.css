@@ -29,11 +29,11 @@
     aspect-ratio: 1;
     background-color: #ddd;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.4s;
 }
 
 .card.flipped {
-    transform: rotateY(90deg);
+    transform: rotateY(360deg);
 /*     transform: none; */
 }
 

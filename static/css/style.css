@@ -33,7 +33,7 @@
 }
 
 .card.flipped {
-    transform: rotateY(360deg);
+    transform: rotateY(270deg);
 /*     transform: none; */
 }
 

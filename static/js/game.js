@@ -14,26 +14,8 @@ class ImageMatchingGame {
             this.initializeElements();
             this.addEventListeners();
             this.setupGameBoard();
-            // 게임 보드 컨테이너 크기 설정 추가
-            // this.setGameBoardSize();
         });
     }
-
-    // 게임 보드 크기 설정을 위한 새로운 메서드
-    // setGameBoardSize() {
-    //     this.gameBoard.style.width = '55%';
-    //     this.gameBoard.style.margin = '0'; // 중앙 정렬 '0 auto'
-        
-    //     // 카드 크기도 적절하게 조정
-    //     const style = document.createElement('style');
-    //     style.textContent = `
-    //         .card {
-    //             aspect-ratio: 1; /* 카드를 정사각형으로 유지 */
-    //             width: 100%; /* 그리드 셀에 맞춤 */
-    //         }
-    //     `;
-    //     document.head.appendChild(style);
-    // }
 
     initializeElements() {
         this.playerNameInput = document.getElementById('playerName');
@@ -198,11 +180,9 @@ class ImageMatchingGame {
 
     calculateScore(success, timeTaken) {
         if (!success) return 0;
-        
         const baseScore = 1000;
         const timePenalty = timeTaken * 2;
         const difficultyMultiplier = this.mode === 'easy' ? 1 : 1.5;
-        
         const finalScore = Math.max(0, 
             Math.floor((baseScore - timePenalty) * difficultyMultiplier));
         return finalScore;
@@ -237,10 +217,8 @@ class ImageMatchingGame {
 
     maskPlayerName(name) {
         if (name.length === 1) return name; // 1글자는 마스킹하지 않음
-        
         const firstChar = name.charAt(0);
         const maskedPart = '*'.repeat(name.length - 1); // 첫 글자를 제외한 모든 글자를 마스킹
-        
         return firstChar + maskedPart;
     }
 
@@ -267,9 +245,7 @@ class ImageMatchingGame {
     endGame(success) {
         clearInterval(this.timer);
         this.gameStarted = false;
-        
         this.saveScore(success);
-        
         this.statusLabel.textContent = success ? 
             '게임 성공! 모든 카드를 맞췄습니다.' : 
             '게임 실패! 시간이 초과되었습니다.';
@@ -279,8 +255,6 @@ class ImageMatchingGame {
         }
     }
 
-
-
     completeReset() {
         this.mode = 'normal';
         this.difficultySelect.value = 'normal';
@@ -288,9 +262,7 @@ class ImageMatchingGame {
         this.startButton.disabled = false;
         this.playerNameInput.disabled = false;
         this.gameStarted = false; // 추가: gameStarted 초기화
-        
         this.setupGameBoard();
-        
         this.remainingTime = this.timeLimit;
         this.updateTimer();
         this.statusLabel.textContent = '';

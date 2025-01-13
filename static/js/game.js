@@ -166,7 +166,7 @@ class ImageMatchingGame {
             card.classList.add('flipped');
 
             if (this.selectedCards.length === 2) {
-                setTimeout(() => this.checkMatch(), 500);
+                setTimeout(() => this.checkMatch(), 200);
             }
         }
     }
@@ -186,7 +186,7 @@ class ImageMatchingGame {
             setTimeout(() => {
                 card1.classList.remove('flipped');
                 card2.classList.remove('flipped');
-            }, 500);
+            }, 300);
         }
         this.selectedCards = [];
     }

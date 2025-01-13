@@ -34,15 +34,32 @@
 
 .card.flipped {
     transform: rotateY(360deg);
-/*     transform: none; */
 }
+
+/* .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+} */
+
 
 .card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: none;
+    opacity: 0; /* display: none 대신 opacity 사용 */
+    visibility: hidden; /* 추가 */
 }
+
+.card.flipped img {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s;
+}
+
+
+
 
 .card.flipped img {
     display: block;

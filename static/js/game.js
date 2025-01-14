@@ -65,7 +65,7 @@ class ImageMatchingGame {
         return {
             'easy': 12,    // 4x3 = 12장
             'normal': 20,  // 5x4 = 20장
-            'hard': 36     // 6x6 = 36장
+            'hard': 30     // 6x5 = 30장
         }[this.mode];
     }
 

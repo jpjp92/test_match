@@ -3,7 +3,7 @@ class ImageMatchingGame {
         this.gameStarted = false;
         this.selectedCards = [];
         this.matchedCards = [];
-        this.timeLimit = 50;
+        this.timeLimit = 60;
         this.remainingTime = this.timeLimit;
         this.timer = null;
         this.mode = "normal";
@@ -55,7 +55,7 @@ class ImageMatchingGame {
     changeDifficulty(difficulty) {
         this.mode = difficulty;
         // 모든 모드 50초로 통일
-        this.timeLimit = 50;
+        this.timeLimit = 60;
         this.remainingTime = this.timeLimit;
         this.updateTimer();
         this.setupGameBoard();

@@ -58,9 +58,6 @@
     transition: opacity 0.2s;
 }
 
-
-
-
 .card.flipped img {
     display: block;
 }
@@ -80,7 +77,6 @@
 .leaderboard td {
     padding: 10px;
     border: 1px solid #ddd;
-    text-align: left;
+    text-align: center;
 }
-
 

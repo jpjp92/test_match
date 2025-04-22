@@ -281,11 +281,13 @@ class ImageMatchingGame {
         
         return Math.max(0, Math.floor((baseScore - timePenalty) * difficultyMultiplier));
     }
-    
     async saveScore(success) {
         const timeTaken = Math.floor((Date.now() - this.gameStartTime) / 1000);
-        const score = this.calculateScore(success, timeTaken);
-
+        let score = this.calculateScore(success, timeTaken);
+    
+        // 점수를 반올림하여 정수로 변환
+        score = Math.round(score);
+    
         try {
             const response = await fetch('/api/scores', {
                 method: 'POST',
@@ -294,12 +296,12 @@ class ImageMatchingGame {
                 },
                 body: JSON.stringify({
                     player_name: this.playerNameInput.value,
-                    score: score,
+                    score: score, // 반올림된 점수
                     difficulty: this.mode,
                     time_taken: timeTaken
                 })
             });
-            
+    
             if (!response.ok) throw new Error('점수 저장 실패');
             
             await this.updateLeaderboard();
@@ -310,6 +312,34 @@ class ImageMatchingGame {
             return false;
         }
     }
+    // async saveScore(success) {
+    //     const timeTaken = Math.floor((Date.now() - this.gameStartTime) / 1000);
+    //     const score = this.calculateScore(success, timeTaken);
+
+    //     try {
+    //         const response = await fetch('/api/scores', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({
+    //                 player_name: this.playerNameInput.value,
+    //                 score: score,
+    //                 difficulty: this.mode,
+    //                 time_taken: timeTaken
+    //             })
+    //         });
+            
+    //         if (!response.ok) throw new Error('점수 저장 실패');
+            
+    //         await this.updateLeaderboard();
+    //         return true;
+    //     } catch (error) {
+    //         console.error('점수 저장 중 오류:', error);
+    //         alert('점수 저장 중 오류가 발생했습니다.');
+    //         return false;
+    //     }
+    // }
 
     showLeaderboard() {
         this.updateLeaderboard().then(() => {
